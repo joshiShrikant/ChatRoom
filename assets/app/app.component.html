@@ -1,0 +1,47 @@
+<div class="container-fluid">
+    <div class="row">
+        <h2>Chat room for <span style="color: dimgrey; font-weight: bold;">Tech</span> <span style="color: red; font-weight: bold">Mahindra</span></h2>
+        <hr>
+    </div>
+    <div class="row" style="margin-bottom: 10px;">
+        <div class="col-sm-2">
+            <div class="form-group">
+                <label for="username">Name</label>
+                <input type="text" [(ngModel)]="user" class="form-control" id="username" placeholder="Enter username">
+            </div>
+        </div>
+        <div class="col-sm-2">
+            <label for="roomInput">Select room</label>
+            <select name="roomInput" id="roomInput" class="form-control" [(ngModel)]="room">
+                <option value="HR">TechM HR</option>
+                <option value="Dev">TechM Dev</option>
+                <option value="Test">TechM Test</option>
+            </select>
+        </div>
+        <div class="col sm-2">
+            <div style="margin-top:19px;"> 
+                <button type="button" class="btn btn-primary" (click)="join()">Join</button>
+                <button type="button" class="btn btn-danger" (click)="leave()">Leave</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="well" style="height:150px; padding:15px;">
+            <div *ngFor="let item of messageArray">
+            <span><strong>{{item.user}} : </strong> {{item.message}}</span>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-10" style="margin-top: 10px;">
+            <input type="text" class="form-control" [(ngModel)]="messageText" (keyup.enter)="sendMessage()">            
+        </div>
+        <div class="col-sm-2" style="margin-top: 10px;">
+                <button type="button" class="btn btn-success" (click)="sendMessage()">Send</button>
+        </div>
+        <div class="col-sm-5" style="margin-top: 10px;">
+          (press enter to send massage)
+    </div>
+    </div>
+</div>
